@@ -7,8 +7,8 @@ fi
 # --alpha_epoch 20 --filter_multiplier 8 --resize 512 --crop_size 321
 
 CUDA_VISIBLE_DEVICES=5 nohup python -u train_autodeeplab.py --batch-size 2 --dataset cityscapes \
- --checkname ad0_s --alpha_epoch 20 --filter_multiplier 8 --resize 512 --crop_size 321  > ../logdir/ad0_s.log  2>&1 &
+ --checkname ad0_s --alpha_epoch 20 --filter_multiplier 8 --resize 512 --crop_size 321  > logdir/ad0_s.log  2>&1 &
 
 CUDA_VISIBLE_DEVICES=6 nohup python -u train_autodeeplab.py --batch-size 4 --dataset cityscapes \
- --checkname ad1_s --alpha_epoch 20 --filter_multiplier 8 --resize 512 --crop_size 321  > ../logdir/ad1_s.log  2>&1 &
+ --checkname ad1_s --alpha_epoch 20 --filter_multiplier 8 --resize 512 --crop_size 321  > logdir/ad1_s.log  2>&1 &
 
