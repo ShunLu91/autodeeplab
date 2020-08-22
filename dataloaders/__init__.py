@@ -67,12 +67,12 @@ def make_data_loader(args, **kwargs):
                 raise Exception('autodeeplab param not set properly')
 
             val_set = cityscapes.CityscapesSegmentation(args, split='val')
-            test_set = cityscapes.CityscapesSegmentation(args, split='test')
+            # test_set = cityscapes.CityscapesSegmentation(args, split='test')
             val_loader = DataLoader(val_set, batch_size=args.batch_size, shuffle=False, **kwargs)
-            test_loader = DataLoader(test_set, batch_size=args.batch_size, shuffle=False, **kwargs)
+            # test_loader = DataLoader(test_set, batch_size=args.batch_size, shuffle=False, **kwargs)
 
             if args.autodeeplab == 'search':
-                return train_loader1, train_loader2, val_loader, test_loader, num_class
+                return train_loader1, train_loader2, val_loader, None, num_class
             elif args.autodeeplab == 'train':
                 return train_loader, num_class
 
