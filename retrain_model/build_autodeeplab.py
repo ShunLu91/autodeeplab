@@ -19,8 +19,8 @@ class Retrain_Autodeeplab(nn.Module):
             network_arch, cell_arch, network_path = np.load(args.net_arch), np.load(args.cell_arch), np.load(args.net_path)
         else:
             network_arch, cell_arch, network_path = get_default_arch()
-        print('network_arch', network_arch)
-        print('cell_arch', cell_arch)
+        # print('network_arch', network_arch)
+        # print('cell_arch', cell_arch)
         self.encoder = newModel(network_arch, cell_arch, args.num_classes, 12, args.filter_multiplier, BatchNorm=BatchNorm2d, args=args)
         self.aspp = ASPP(args.filter_multiplier * args.block_multiplier * filter_param_dict[network_path[-1]],
                          256, args.num_classes, conv=nn.Conv2d, norm=BatchNorm2d)
