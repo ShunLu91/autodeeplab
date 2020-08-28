@@ -16,7 +16,7 @@ class Retrain_Autodeeplab(nn.Module):
         if (not args.dist and args.use_ABN) or (args.dist and args.use_ABN and dist.get_rank() == 0):
             print("=> use ABN!")
         if args.net_arch is not None and args.cell_arch is not None:
-            network_arch, cell_arch = np.load(args.net_arch), np.load(args.cell_arch)
+            network_arch, cell_arch, network_path = np.load(args.net_arch), np.load(args.cell_arch), np.load(args.net_path)
         else:
             network_arch, cell_arch, network_path = get_default_arch()
         print('network_arch', network_arch)

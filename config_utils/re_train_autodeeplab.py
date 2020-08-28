@@ -35,6 +35,7 @@ def obtain_retrain_autodeeplab_args():
     parser.add_argument('--port', default=6000, type=int)
     parser.add_argument('--max-iteration', default=1000000, type=bool)
     parser.add_argument('--net_arch', default=None, type=str)
+    parser.add_argument('--net_path', default=None, type=str)
     parser.add_argument('--cell_arch', default=None, type=str)
     parser.add_argument('--criterion', default='Ohem', type=str)
     parser.add_argument('--initial-fm', default=None, type=int)
