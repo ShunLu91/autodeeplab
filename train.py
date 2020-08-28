@@ -17,13 +17,12 @@ from retrain_model.build_autodeeplab import Retrain_Autodeeplab
 from config_utils.re_train_autodeeplab import obtain_retrain_autodeeplab_args
 
 
-
 def main():
     warnings.filterwarnings('ignore')
     assert torch.cuda.is_available()
     torch.backends.cudnn.benchmark = True
     args = obtain_retrain_autodeeplab_args()
-    model_fname = 'data/deeplab_{0}_{1}_v3_{2}_epoch%d.pth'.format(args.backbone, args.dataset, args.exp)
+    model_fname = 'checkpoint/deeplab_{0}_{1}_v3_{2}_epoch%d.pth'.format(args.backbone, args.dataset, args.exp)
     if args.dataset == 'pascal':
         raise NotImplementedError
     elif args.dataset == 'cityscapes':
@@ -103,6 +102,7 @@ def main():
             }, model_fname % (epoch + 1))
 
         print('reset local total loss!')
+
 
 if __name__ == "__main__":
     main()

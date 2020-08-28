@@ -14,6 +14,11 @@ fi
 # --checkname ad1_s --alpha_epoch 20 --filter_multiplier 8 --resize 512 --crop_size 321  > logdir/ad1_s.log  2>&1 &
 
 #************** decode **************#
-CUDA_VISIBLE_DEVICES=6 nohup python -u decode_autodeeplab.py --dataset cityscapes \
-  --resume ./run/cityscapes/ad1_s/experiment_0/checkpoint.pth.tar > logdir/ad1_s_decode.log  2>&1 &
+#CUDA_VISIBLE_DEVICES=6 nohup python -u decode_autodeeplab.py --dataset cityscapes \
+#  --resume ./run/cityscapes/ad1_s/experiment_0/checkpoint.pth.tar > logdir/ad1_s_decode.log  2>&1 &
 
+#************** retrain **************#
+CUDA_VISIBLE_DEVICES=6 nohup python -u train.py --exp ad1_retrain --dataset cityscapes --workers 8 \
+  --net_arch ./run/cityscapes/ad1_s/experiment_0/network_path.npy --batch_size 16 \
+  --cell_arch ./run/cityscapes/ad1_s/experiment_0/genotype.npy > logdir/ad1_retrain.log  2>&1 &
+tail -f logdir/ad1_retrain.log
