@@ -19,6 +19,6 @@ fi
 
 #************** retrain **************#
 CUDA_VISIBLE_DEVICES=6 nohup python -u train.py --exp ad1_retrain --dataset cityscapes --workers 8 \
-  --net_arch ./run/cityscapes/ad1_s/experiment_0/network_path_space.npy.npy --batch_size 16 \
+  --net_arch ./run/cityscapes/ad1_s/experiment_0/network_path_space.npy --batch_size 16 \
   --cell_arch ./run/cityscapes/ad1_s/experiment_0/genotype.npy > logdir/ad1_retrain.log  2>&1 &
 tail -f logdir/ad1_retrain.log
