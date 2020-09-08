@@ -61,4 +61,4 @@ if __name__ == '__main__':
 
     genotype_list = genotypes.generate_random_genotypes(n=40)
     for i, _geno in enumerate(genotype_list):
-        plot(_geno, 'figure/' + 'geno_%d' % i)
+        plot(_geno, 'genotypes/' + 'geno_%d' % i)
