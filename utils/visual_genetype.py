@@ -1,11 +1,12 @@
 import sys
 import genotypes
 from graphviz import Digraph
+from pdf2img import convert_pdf_to_img
 
 
 def plot(genotype, filename):
     g = Digraph(
-        format='png',
+        format='pdf',
         edge_attr=dict(fontsize='20', fontname="times"),
         node_attr=dict(style='filled', shape='rect', align='center', fontsize='20', height='0.5', width='0.5',
                        penwidth='2', fontname="times"),
@@ -55,10 +56,14 @@ def plot(genotype, filename):
 
 if __name__ == '__main__':
     # genotype_name = 'ad0_s'
-    # genotype = eval('genotypes.{}'.format(genotype_name))
+    # genotype = eval('geno_pdf.{}'.format(genotype_name))
     #
     # plot(genotype, 'figure/' + genotype_name)
 
+    # generate pdf
     genotype_list = genotypes.generate_random_genotypes(n=40)
     for i, _geno in enumerate(genotype_list):
-        plot(_geno, 'genotypes/' + 'geno_%d' % i)
+        plot(_geno, 'geno_pdf/' + 'geno_%d' % i)
+
+    # convert pdf to img
+    convert_pdf_to_img('./geno_pdf', './genotypes')
